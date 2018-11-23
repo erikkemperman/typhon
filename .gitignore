@@ -1,7 +1,9 @@
 .pytest_cache/
-__pycache__/
+**/__pycache__/
+**/*.pyc
 .idea
 venv/
-doc
-etc/sphinx/apidoc
+doc/
+etc/sphinx/apidoc/
+
 

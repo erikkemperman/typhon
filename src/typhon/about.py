@@ -8,3 +8,8 @@ def test(arg: str) -> bool:
     """
     return arg == 'foo'
 
+
+
+def foo(a, b):
+    return a + b
+

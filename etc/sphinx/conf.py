@@ -18,10 +18,10 @@ import re
 # General information about the project.
 project_dir = os.path.abspath('../..')
 
+print(sys.version_info)
 
-# Let's read the metadata from the project setup.py to keep config files generic
+# Read the metadata from the project setup.py to keep this config file generic
 sys.path.insert(0, os.path.join(project_dir))
-print(sys.path)
 from setup import project_meta
 project = project_meta['name']
 copyright = project_meta['copyright']
@@ -34,12 +34,12 @@ version = re.sub('[^0-9.].*', '', release)  # just x.y.z
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path[0] = os.path.join(sys.path[0], 'src')
-print(sys.path)
+
 
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.0'
+needs_sphinx = '1.8'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -49,7 +49,6 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.pngmath',
     'sphinx.ext.viewcode',
 ]
 

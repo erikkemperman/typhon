@@ -5,3 +5,5 @@ from sys import version_info
 
 from . import about
 
+class mycalss:
+    pass
