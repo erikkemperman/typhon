@@ -18,22 +18,23 @@ import re
 # General information about the project.
 project_dir = os.path.abspath('../..')
 
-print(sys.version_info)
-
-# Read the metadata from the project setup.py to keep this config file generic
+# Read the metadata from the project setup.py to keep this config file generic;
+# Temporarily add the root dir to system.path, then we'll replace that for the
+# actual module source path, a bit further down.
 sys.path.insert(0, os.path.join(project_dir))
+
 from setup import project_meta
 project = project_meta['name']
 copyright = project_meta['copyright']
 author = project_meta['author']
-release = project_meta['version']           # includes e.g. -rc
-version = re.sub('[^0-9.].*', '', release)  # just x.y.z
+release = project_meta['version']           # Includes e.g. -rc
+version = re.sub('[^0-9.].*', '', release)  # Just x.y.z
 
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path[0] = os.path.join(sys.path[0], 'src')
+sys.path[0] = os.path.join(sys.path[0], 'src/main')
 
 
 # -- General configuration ------------------------------------------------
@@ -61,7 +62,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The encoding of sphinx files.
-#source_encoding = 'utf-8-sig'
+source_encoding = 'utf-8'
 
 # The master toctree document.
 master_doc = 'index'
@@ -100,7 +101,7 @@ exclude_patterns = []
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'default'  # 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -116,7 +117,7 @@ todo_include_todos = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'alabaster'
+html_theme = 'default'  # 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -289,3 +290,8 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+
+def setup(app):
+    app.add_stylesheet('css/custom.css')
+

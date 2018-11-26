@@ -24,10 +24,11 @@ endif
 # Internal variables.
 PAPEROPT_a4	 = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXDOCOPTS   = -e -o $(APIDOCDIR) $(SPHINXDOCOPTS)
+ALLSPHINXDOCOPTS   = -Me -o $(APIDOCDIR) $(SPHINXDOCOPTS)
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(SOURCEDIR)
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(SOURCEDIR)
+
 
 .PHONY: help
 help:
@@ -57,13 +58,17 @@ help:
 	@echo "  doctest	to run all doctests embedded in the documentation (if enabled)"
 	@echo "  coverage   to run coverage check of the documentation (if enabled)"
 
+.PHONY: all
+all: clean doctest coverage html
+
+
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)/* $(APIDOCDIR)/*
 
 .PHONY: apidoc
 apidoc:
-	SPHINX_APIDOC_OPTIONS=members,show-inheritance $(SPHINXAPIDOC) $(ALLSPHINXDOCOPTS) ../../src/*
+	SPHINX_APIDOC_OPTIONS=members,show-inheritance $(SPHINXAPIDOC) $(ALLSPHINXDOCOPTS) ../../src/main/*
 
 .PHONY: html
 html: apidoc

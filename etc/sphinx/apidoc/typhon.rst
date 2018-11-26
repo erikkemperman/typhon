@@ -1,6 +1,10 @@
 typhon package
 ==============
 
+.. automodule:: typhon
+    :members:
+    :show-inheritance:
+
 Submodules
 ----------
 
@@ -8,9 +12,3 @@ Submodules
 
    typhon.about
 
-Module contents
----------------
-
-.. automodule:: typhon
-    :members:
-    :show-inheritance:
